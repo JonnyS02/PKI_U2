@@ -1,4 +1,4 @@
-;test
+;Wechsel dein Pb
 (define (domain hanoi)
     (:requirements :strips)
     (:predicates
