@@ -1,3 +1,4 @@
+;test
 (define (domain hanoi)
     (:requirements :strips)
     (:predicates
