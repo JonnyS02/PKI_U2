@@ -1,0 +1,12 @@
+{
+    "pddl.selectedPlanner": "enhsp.jar",
+    "pddl.planners": [
+        {
+            "kind": "JAVA_JAR",
+            "canConfigure": true,
+            "path": "enhsp-dist\\enhsp.jar",
+            "title": "enhsp.jar",
+            "syntax": "$(planner) -o $(domain) -f $(problem) $(options)"
+        }
+    ]
+}
