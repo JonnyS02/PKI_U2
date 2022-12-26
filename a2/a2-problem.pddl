@@ -12,6 +12,7 @@
         (kurs-angeboten Webdesign)
         (kurs-angeboten Malerei)
         (kurs-angeboten Tonformen)
+
         (lehrer-unterrichtet Ahorn EDV_01)
         (lehrer-unterrichtet Ahorn EDV_02)
         (lehrer-unterrichtet Eiche EDV_02)
@@ -20,15 +21,18 @@
         (lehrer-unterrichtet Birke Malerei)
         (lehrer-unterrichtet Kiefer Malerei)
         (lehrer-unterrichtet Kiefer Tonformen)
+        
         (teilnehmerzahl EDV_01 123)
         (teilnehmerzahl EDV_02 50)
         (teilnehmerzahl Webdesign 84)
         (teilnehmerzahl Malerei 105)
         (teilnehmerzahl Tonformen 39)
+
         (raum-kapazität Raum01 10)
         (raum-kapazität Raum02 12)
         (raum-kapazität Raum03 8)
         (raum-kapazität Raum04 5)
+
         (im-raum EDV_01 Raum01)
         (im-raum EDV_02 Raum02)
         (im-raum Webdesign Raum03)
@@ -49,3 +53,4 @@
             (geplant Tonformen t10)
         )
     )
+)
