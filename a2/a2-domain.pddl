@@ -1,35 +1,37 @@
-;press Shift + Alt + F to format
 (define (domain volkshochschule-planung)
-    (:requirements :typing :conditional-effects)
+    (:requirements :typing :fluents :conditional-effects)
     (:types
-        zahl kurs raum - objekt
+        zeitslot kurs raum - objekt
         lehrer - agent
-        zeitslot - zeit
     )
     (:predicates
-        (kurs-angeboten ?k - kurs)
-        (lehrer-unterrichtet ?l - lehrer ?k - kurs)
-        (im-raum ?k - kurs ?r - raum)
-        (raum-kapazitaet ?r - raum ?n - zahl)
-        (teilnehmerzahl ?k - kurs ?n - zahl)
-        (geplant ?k - kurs ?t - zeitslot)
-        (unterrichtet ?l - lehrer ?k - kurs ?t - zeitslot)
+        (kurs-abhaltbar-in-raum ?k - kurs ?r - raum)
+        (lehrer-kann-unterrichten ?l - lehrer ?k - kurs)
+        (lehrer-unterrichtet ?l - lehrer ?z - zeitslot)
+        (raum-ist-belegt ?r - raum ?z - zeitslot)
+        (belegt ?k - kurs ?z - zeitslot)
     )
-
-    (:action unterrichten
-        :parameters (?l - lehrer ?k - kurs ?t - zeitslot)
-        :precondition (and (lehrer-unterrichtet ?l ?k)
-            (not (unterrichtet ?l ?k ?t))
-            (geplant ?k ?t))
-        :effect (and (unterrichtet ?l ?k ?t)
-            (decrease (raum-kapazitaet ?r) 1))
+    (:functions
+        (kursanzahl)
+        (kapazitaet ?r - raum)
+        (teilnehmerzahl ?k - kurs)
     )
-    (:action planen
-        :parameters (?k - kurs ?t - zeitslot)
-        :precondition (not (geplant ?k ?t))
-        :effect (geplant ?k ?t)
-    )
+    
     (:action belegen
-        :parameters (?k - kurs ?r - raum ?t1 - zeit ?t2 - zeit)
+        :parameters (?r - raum ?z - zeitslot ?l - lehrer ?k - kurs)
+        :precondition (and
+            (kurs-abhaltbar-in-raum ?k ?r)
+            (lehrer-kann-unterrichten ?l ?k)
+            (not(lehrer-unterrichtet ?l ?z))
+            (not(raum-ist-belegt ?r ?z))
+            (not(belegt ?k ?z))
+        )
+        :effect (and
+            (lehrer-unterrichtet ?l ?z)
+            (raum-ist-belegt ?r ?z)
+            (increase (kursanzahl) 1)
+            (decrease (teilnehmerzahl ?k) (kapazitaet ?r))
+            (belegt ?k ?z)
+        )
     )
 )
