@@ -1,3 +1,4 @@
+
 (define (problem problem_Sunshine_Logistics) (:domain domain_Sunshine_Logistics)
 (:objects 
     PARCEL1 PARCEL2 PARCEL3 PARCEL4 PARCEL5 PARCEL6 PARCEL7 PARCEL8 - parcel
@@ -11,49 +12,54 @@
 
 (:init
     ;todo: put the initial state's facts and numeric values here
-    (warehouseAt WAREHOUSE1 SPANDAU)
-    (warehouseAt WAREHOUSE2 LICHTENBERG)
-    (warehouseAt WAREHOUSE3 PANKOW)
-    (warehouseAt WAREHOUSE4 NEUKOELLN)
-    (warehouseAt WAREHOUSE5 NEUKOELLN)
+    (at WAREHOUSE1 SPANDAU)
+    (at WAREHOUSE2 LICHTENBERG)
+    (at WAREHOUSE3 PANKOW)
+    (at WAREHOUSE4 NEUKOELLN)
+    (at WAREHOUSE5 NEUKOELLN)
 
-    (= (distance SPANDAU PANKOW ) 15)
-    (= (distance SPANDAU_LICHTENBERG )25)
-    (= (distance SPANDAU_NEUKOELLN ) 26)
+    ; (= (distance SPANDAU PANKOW ) 15)
+    ; (= (distance SPANDAU_LICHTENBERG )25)
+    ; (= (distance SPANDAU_NEUKOELLN ) 26)
 
-    (= (time SPANDAU PANKOW ) 30)
-    (= (time  SPANDAU_LICHTENBERG )30)
-    (= (time  SPANDAU_NEUKOELLN ) 30)
+    ; (= (time SPANDAU PANKOW ) 30)
+    ; (= (time  SPANDAU_LICHTENBERG )30)
+    ; (= (time  SPANDAU_NEUKOELLN ) 30)
 
-    (truckAt TRUCK1 SPANDAU)
-    (truckAt TRUCK2 SPANDAU)
+    (at TRUCK1 SPANDAU)
+    (at TRUCK2 SPANDAU)
 
-    (staffAt BERGER  SPANDAU)
-    (staffAt SCHMITZ SPANDAU)
-    (staffAt MEYER SPANDAU)
-    (staffAt FISCHER SPANDAU)
+    (at BERGER  SPANDAU)
+    (at SCHMITZ SPANDAU)
+    (at MEYER SPANDAU)
+    (at FISCHER SPANDAU)
 
-    (parcelAt PARCEL1 WAREHOUSE1)
-    (parcelAt PARCEL2 WAREHOUSE1)
-    (parcelAt PARCEL3 WAREHOUSE1)
-    (parcelAt PARCEL4 WAREHOUSE1)
-    (parcelAt PARCEL5 WAREHOUSE1)
-    (parcelAt PARCEL6 WAREHOUSE1)
-    (parcelAt PARCEL7 WAREHOUSE1)
-    (parcelAt PARCEL8 WAREHOUSE1)
+    (hasDrivingLicence MEYER)
+    (hasDrivingLicence BERGER)
+    (hasDrivingLicence SCHMITZ)
+
+
+    (at PARCEL1 WAREHOUSE1)
+    (at PARCEL2 WAREHOUSE1)
+    (at PARCEL3 WAREHOUSE1)
+    (at PARCEL4 WAREHOUSE1)
+    (at PARCEL5 WAREHOUSE1)
+    (at PARCEL6 WAREHOUSE1)
+    (at PARCEL7 WAREHOUSE1)
+    (at PARCEL8 WAREHOUSE1)
 
 )
 
 (:goal (and
     ;todo: put the goal condition here
-    (parcelAt PARCEL1 WAREHOUSE2)
-    (parcelAt PARCEL3 WAREHOUSE2)
-    (parcelAt PARCEL4 WAREHOUSE2)
-    (parcelAt PARCEL5 WAREHOUSE2)
-    (parcelAt PARCEL7 WAREHOUSE3)
-    (parcelAt PARCEL2 WAREHOUSE4)
-    (parcelAt PARCEL6 WAREHOUSE4)
-    (parcelAt PARCEL8 WAREHOUSE4)
+    (at PARCEL1 WAREHOUSE2)
+    (at PARCEL3 WAREHOUSE2)
+    (at PARCEL4 WAREHOUSE2)
+    (at PARCEL5 WAREHOUSE2)
+    (at PARCEL7 WAREHOUSE3)
+    (at PARCEL2 WAREHOUSE4)
+    (at PARCEL6 WAREHOUSE4)
+    (at PARCEL8 WAREHOUSE4)
    
 
 ))
@@ -61,3 +67,7 @@
 ;un-comment the following line if metric is needed
 ;(:metric minimize (???))
 )
+
+
+
+
