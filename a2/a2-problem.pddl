@@ -7,9 +7,7 @@
         t1 t2 t3 t4 t5 t6 t7 t8 t9 t10 - zeitslot
     )
     (:init
-        (= (kursanzahl) 0)
         (= (plaetze) 0)
-
         (lehrer-kann-unterrichten Ahorn EDV_01)
         (lehrer-kann-unterrichten Ahorn EDV_02)
         (lehrer-kann-unterrichten Eiche EDV_02)
@@ -29,12 +27,21 @@
         (=(kapazitaet Raum02) 12)
         (=(kapazitaet Raum03) 8)
         (=(kapazitaet Raum04) 5)
+
     )
     (:goal
+    ;Volle Auslastung der Lehrer (Lösung in ca. 4 Sekunden).
         (and
-            (=(kursanzahl)30)
+            (forall
+                (?l - lehrer)
+                (
+                forall(?z - zeitslot)
+                    (lehrer-unterrichtet ?l ?z)
+                ))
         )
     )
+    ;Die Auswahl von großen Räumen wird priorisiert,
+    ;bei voller Auslastung allerdings egal, da alle Räume immer belegt sind.
     (:metric maximize
         (plaetze)
     )
