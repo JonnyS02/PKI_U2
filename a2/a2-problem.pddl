@@ -8,6 +8,8 @@
     )
     (:init
         (= (kursanzahl) 0)
+        (= (plaetze) 0)
+
         (lehrer-kann-unterrichten Ahorn EDV_01)
         (lehrer-kann-unterrichten Ahorn EDV_02)
         (lehrer-kann-unterrichten Eiche EDV_02)
@@ -27,33 +29,13 @@
         (=(kapazitaet Raum02) 12)
         (=(kapazitaet Raum03) 8)
         (=(kapazitaet Raum04) 5)
-
-        (kurs-abhaltbar-in-raum EDV_01 Raum01)
-        (kurs-abhaltbar-in-raum EDV_01 Raum02)
-        (kurs-abhaltbar-in-raum EDV_02 Raum01)
-        (kurs-abhaltbar-in-raum EDV_02 Raum02)
-        (kurs-abhaltbar-in-raum Webdesign Raum01)
-        (kurs-abhaltbar-in-raum Webdesign Raum02)
-        (kurs-abhaltbar-in-raum Malerei Raum03)
-        (kurs-abhaltbar-in-raum Malerei Raum04)
-        (kurs-abhaltbar-in-raum Tonformen Raum03)
-        (kurs-abhaltbar-in-raum Tonformen Raum04)
     )
     (:goal
         (and
-            (belegt EDV_01 t1)
-            (belegt EDV_01 t2)
-            (belegt EDV_02 t3)
-            (belegt EDV_02 t4)
-            (belegt Webdesign t5)
-            (belegt Webdesign t6)
-            (belegt Malerei t7)
-            (belegt Malerei t8)
-            (belegt Tonformen t9)
-            (belegt Tonformen t10)
+            (=(kursanzahl)30)
         )
     )
-    (:metric minimize
-        (kursanzahl)
+    (:metric maximize
+        (plaetze)
     )
 )
