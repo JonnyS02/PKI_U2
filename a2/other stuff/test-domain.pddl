@@ -3,7 +3,7 @@
 (define (domain test)
 
     ;remove requirements that are not needed
-    (:requirements :strips :fluents :negative-preconditions)
+(:requirements :strips :fluents :durative-actions :timed-initial-literals :typing :conditional-effects :negative-preconditions :duration-inequalities :equality)
 
     (:types
         multiplier

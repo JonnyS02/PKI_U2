@@ -14,7 +14,7 @@
     (:goal
         (=(count)3)
     )
-    (:metric minimize
+    (:metric maximize
         (cost)
     )
 )

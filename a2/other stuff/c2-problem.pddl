@@ -44,11 +44,11 @@
         (=(kapazitaet Raum04) 5)
 
         ;b
-        (=(gebuehr EDV_01)0)
+        (=(gebuehr EDV_01)20)
         (=(gebuehr EDV_02)30)
-        (=(gebuehr Webdesign)0)
-        (=(gebuehr Malerei)0)
-        (=(gebuehr Tonformen)0)
+        (=(gebuehr Webdesign)25)
+        (=(gebuehr Malerei)30)
+        (=(gebuehr Tonformen)50)
 
         (lehrer-unterrichtet Birke Tag1Nachmittag)
         (lehrer-unterrichtet Birke Tag2Nachmittag)
