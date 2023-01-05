@@ -7,24 +7,20 @@
     BERGER SCHMITZ MEYER - driver
     FISCHER - boss
     SPANDAU PANKOW LICHTENBERG NEUKOELLN - location
-    SPANDAU_PANKOW SPANDAU_LICHTENBERG SPANDAU_NEUKOELLN - road
 )   
 
 (:init
     ;todo: put the initial state's facts and numeric values here
+    
+    (= (distance_from_spandau_to_location PANKOW) 15)
+    (= (distance_from_spandau_to_location LICHTENBERG) 26)
+    (= (distance_from_spandau_to_location NEUKOELLN) 25)
+    
     (at WAREHOUSE1 SPANDAU)
     (at WAREHOUSE2 LICHTENBERG)
     (at WAREHOUSE3 PANKOW)
     (at WAREHOUSE4 NEUKOELLN)
     (at WAREHOUSE5 NEUKOELLN)
-
-    ; (= (distance SPANDAU PANKOW ) 15)
-    ; (= (distance SPANDAU_LICHTENBERG )25)
-    ; (= (distance SPANDAU_NEUKOELLN ) 26)
-
-    ; (= (time SPANDAU PANKOW ) 30)
-    ; (= (time  SPANDAU_LICHTENBERG )30)
-    ; (= (time  SPANDAU_NEUKOELLN ) 30)
 
     (at TRUCK1 SPANDAU)
     (at TRUCK2 SPANDAU)

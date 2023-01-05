@@ -4,18 +4,14 @@
 
 ;remove requirements that are not needed
 ;(:requirements :strips :fluents :durative-actions :timed-initial-literals :typing :conditional-effects :negative-preconditions :duration-inequalities :equality)
-(:requirements :strips :fluents :typing )
+(:requirements :strips :fluents :typing  :negative-preconditions)
 
 (:types 
 	staff
     warehouse
     truck
-    boss driver - staff
-    road
     location
     parcel
-    hours
-    kilometers
     ;todo: enumerate types and their hierarchy here, e.g. car truck bus - vehicle
 )
 
@@ -24,71 +20,80 @@
 
 (:predicates ;todo: define predicates here
     (at ?o - object ?l - location)
-    (parcelIn ?p - parcel ?t - truck)
+	;is the parcel/truck/staff/warehouse at the location
+    (parcel_in_truck ?p - parcel ?t - truck)
     ;parcel p is located in the truck t
+	(parcel_in_warehouse ?p - parcel ?w - warehouse)
+    ;parcel p is locatedin the warehouse w
+	(staff_at_warehouse ?s - staff ?w - warehouse)
+	;staff s is at the warehouse w
+	(staff_in_truck ?s - staff ?t - truck)
+	;staff s is at the warehouse w
     (hasDrivingLicence ?s - staff)
-    ;staff s has truck driving licence
-    (hoursOfWork ?s - staff ?h - hours)
-    ;Number of working hours of an employee
-    (kilometerage ?t - truck  ?k - kilometers)
-    ;kilometerage of a truck
-    (truckOn ?t - truck ?r - road)
-    ;the road the truck is driving on 
+	;staff s has truck driving licence
 )
 
-;(:functions ;todo: define numeric functions here
-;    (distance ?r - road) 
-;    ; Distance between two locations in km
-;    (time ?r - road) 
-;    ;travel time between two locations
-;)
+(:functions ;todo: define numeric functions here
+	(hours_of_work ?s - staff)
+	;hours of work of a staff s
+	(kilometers_travelled ?t - truck) 
+	;the current kilometer of the truck
+	(travel_duration)
+	;the travel duration between spandau and other locations
+	(distance_from_spandau_to_location ?l - location)
+	;the distance between spandau and a location l
 
-;define actions here
-(:action load ; 
-		:parameters (?t - truck ?p - parcel ?l - location)
+)
+
+;do we need an action to transport parcel from warehouse to truck? 
+
+(:action load  
+		:parameters (?t - truck ?p - parcel ?from - location ?to - location ?s - staff ?w - warehouse)
 		:precondition (and
-		 (at ?t ?l) (at ?p ?l)
+		 (at ?t ?from) (at ?p ?from) (at ?s ?from) (parcel_in_warehouse ?p ?w )
 		)
 		:effect (and
-		 (not(at ?p ?l)) (parcelIn ?p ?t)
+		 (not(parcel_in_warehouse ?p ?w )) (parcel_in_truck ?p ?t) (staff_in_truck ?s ?t)
+		 (increase (hours_of_work ?s) 1)
+		 ;we assume that load and unload takes 1 time unit
 		)
 	)
 
-(:action transport 
-		:parameters (?d - driver ?t - truck ?p - parcel ?from - location ?to - location
-		)
+(:action transport
+		:parameters (?s - staff ?t - truck ?p - parcel ?from - location ?to - location ?w - warehouse)
 		:precondition (and
-		    (at ?d ?from) (at ?p ?from) (at ?t ?from) (hasDrivingLicence ?d)
+		    (at ?s ?from) (at ?p ?from) (at ?t ?from) (hasDrivingLicence ?s)
+		    (parcel_in_truck ?p ?t) (not(staff_in_truck ?s ?t))
 		)
 		:effect (and
-		    (at ?d ?to) (at ?p ?to) (at ?t ?to) (not (at ?d ?from))(not (at ?p ?from))(not (at ?t ?from))
-		    
-		)
+		    (at ?s ?to) (at ?p ?to) (at ?t ?to) (not (at ?s ?from))(not (at ?p ?from))(not (at ?t ?from)) (parcel_in_truck ?p ?t)
+		    (staff_in_truck ?s ?t)
+		    (increase (hours_of_work ?s) (travel_duration))
+		    (increase (kilometers_travelled ?t) (distance_from_spandau_to_location ?to))
+		    ;instead of 1 a function that gives the distance between spandau and the location the truck is going to 
+		    )
 	)
 (:action unload ; 
-		:parameters (?t - truck ?p - parcel ?l - location)
+		:parameters (?t - truck ?p - parcel ?from - location ?to - location ?s - staff ?w - warehouse)
 		:precondition (and
-		 (at ?t ?l) (at ?p ?l)
+		 (at ?t ?to) (at ?p ?to) (at ?s ?to) (parcel_in_truck ?p ?t) (staff_in_truck ?s ?t)
 		)
 		:effect (and
-		 (at ?p ?l) (not(parcelIn ?p ?t))
+		 (not(parcel_in_truck ?p ?t)) (not(staff_in_truck ?s ?t)) (parcel_in_warehouse ?p ?w) (staff_in_truck ?s ?t)
+		 (increase (hours_of_work ?s) 1)
 		)
 	)
 
 (:action return ; 
-		:parameters (?d - driver ?t - truck ?p - parcel ?from - location ?to - location)
+		:parameters (?s - staff ?t - truck ?p - parcel ?from - location ?to - location)
 		:precondition (and
-		    (at ?d ?to) (at ?t ?to)
+		    (at ?s ?to) (at ?t ?to) (not(parcel_in_truck ?p ?t)) (staff_in_truck) (hasDrivingLicence ?s)
 		)
 		:effect (and
-		     (at ?d ?from) (at ?t ?from)
-		    (at ?d ?to) (at ?p ?to) (at ?t ?to) (not (at ?d ?from))(not (at ?p ?from))(not (at ?t ?from))
+		     (at ?s ?from) (at ?t ?from) (not (at ?s ?to))(not (at ?t ?to))
 		    
 			
 		)
 	)
-
-
-
 )
 
