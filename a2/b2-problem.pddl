@@ -1,5 +1,5 @@
-(define (problem volkshochschule-planung-woche1-a)
-    (:domain volkshochschule-planung-a)
+(define (problem volkshochschule-planung-woche1-b)
+    (:domain volkshochschule-planung-b)
     (:objects
         EDV_01 EDV_02 Webdesign Malerei Tonformen - kurs
         Ahorn Eiche Birke Kiefer - lehrer
@@ -9,7 +9,9 @@
 
     )
     (:init
+        (=(gewinn)0)
         (=(plaetze)0)
+
         (ist-nachmittag Tag1Nachmittag)
         (ist-nachmittag Tag2Nachmittag)
         (ist-nachmittag Tag3Nachmittag)
@@ -36,6 +38,13 @@
         (=(kapazitaet Raum03) 8)
         (=(kapazitaet Raum04) 5)
 
+        ;b
+        (=(gebuehr EDV_01)0)
+        (=(gebuehr EDV_02)30)
+        (=(gebuehr Webdesign)0)
+        (=(gebuehr Malerei)0)
+        (=(gebuehr Tonformen)0)
+
     )
     (:goal
         (and
@@ -48,6 +57,6 @@
         )
     )
     (:metric maximize
-        (plaetze)
+        (gewinn)
     )
 )

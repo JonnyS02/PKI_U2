@@ -1,5 +1,5 @@
-(define (problem volkshochschule-planung-woche1-a)
-    (:domain volkshochschule-planung-a)
+(define (problem volkshochschule-planung-woche1-c)
+    (:domain volkshochschule-planung-c)
     (:objects
         EDV_01 EDV_02 Webdesign Malerei Tonformen - kurs
         Ahorn Eiche Birke Kiefer - lehrer
@@ -9,7 +9,14 @@
 
     )
     (:init
+        (=(gewinn)0)
         (=(plaetze)0)
+
+        (=(lehrer-termine Ahorn)0)
+        (=(lehrer-termine Eiche)0)
+        (=(lehrer-termine Birke)0)
+        (=(lehrer-termine Kiefer)0)
+
         (ist-nachmittag Tag1Nachmittag)
         (ist-nachmittag Tag2Nachmittag)
         (ist-nachmittag Tag3Nachmittag)
@@ -36,15 +43,33 @@
         (=(kapazitaet Raum03) 8)
         (=(kapazitaet Raum04) 5)
 
+        ;b
+        (=(gebuehr EDV_01)0)
+        (=(gebuehr EDV_02)30)
+        (=(gebuehr Webdesign)0)
+        (=(gebuehr Malerei)0)
+        (=(gebuehr Tonformen)0)
+
+        (lehrer-unterrichtet Birke Tag1Nachmittag)
+        (lehrer-unterrichtet Birke Tag2Nachmittag)
+        (lehrer-unterrichtet Birke Tag3Nachmittag)
+        (lehrer-unterrichtet Birke Tag4Nachmittag)
+        (lehrer-unterrichtet Birke Tag5Nachmittag)
+
+        (lehrer-unterrichtet Kiefer Tag1Vormittag)
+        (lehrer-unterrichtet Kiefer Tag2Vormittag)
+        (lehrer-unterrichtet Kiefer Tag3Vormittag)
+        (lehrer-unterrichtet Kiefer Tag4Vormittag)
+        (lehrer-unterrichtet Kiefer Tag5Vormittag)
+
+
     )
     (:goal
         (and
-            (forall
-                (?l - lehrer)
-                (
-                forall(?z - zeitslot)
-                    (lehrer-unterrichtet ?l ?z)
-                ))
+            (=(lehrer-termine Ahorn)7)
+            (=(lehrer-termine Eiche)5)
+            (=(lehrer-termine Birke)4)
+            (=(lehrer-termine Kiefer)5)
         )
     )
     (:metric maximize

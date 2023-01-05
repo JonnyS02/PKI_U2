@@ -6,21 +6,29 @@
     (:requirements :strips :fluents :negative-preconditions)
 
     (:types
-        location - object
+        multiplier
     )
 
     (:functions
+        (value ?m - multiplier)
+
         (count)
-        (time-to-walk ?l1 - location)
+        (cost)
     )
 
-    (:action Hello_World
-        :parameters (?t - location)
-        :precondition (and(not(=(time-to-walk ?t)(count))))
-
-        :effect (and(increase (count) 1)
-            (decrease (time-to-walk ?t) 1))
-
+    (:action low_cost
+        :parameters (?m - multiplier)
+        :effect (and
+            (increase (count) 1)
+            (increase (cost) (*(value ?m)10))
+            (assign (value ?m) 0)
+        )
     )
-
+    (:action high_cost
+        :parameters (?m - multiplier)
+        :effect (and
+            (increase (count) 1)
+            (increase (cost) (*(value ?m)5))
+        )
+    )
 )

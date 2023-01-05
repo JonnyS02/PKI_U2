@@ -2,15 +2,19 @@
     (:domain test)
 
     (:objects
-        test test2 - location
+        a - multiplier
     )
     (:init
+        (=(value a)3)
+
         (=(count)0)
-        (=(time-to-walk test) 6)
-        (=(time-to-walk test2) 6)
+        (=(cost)0)
+
     )
     (:goal
-        (=(time-to-walk test) 0)
-        (=(count)6)
+        (=(count)3)
+    )
+    (:metric minimize
+        (cost)
     )
 )

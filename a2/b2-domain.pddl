@@ -1,4 +1,4 @@
-(define (domain volkshochschule-planung-a)
+(define (domain volkshochschule-planung-b)
     (:requirements :typing :fluents :conditional-effects :negative-preconditions)
     (:types
         zeitslot kurs raum lehrer
@@ -11,6 +11,8 @@
     )
     (:functions
         (plaetze)
+        (gewinn)
+        (gebuehr ?k - kurs)
         (kapazitaet ?r - raum)
         (teilnehmerzahl ?k - kurs)
     )
@@ -25,6 +27,7 @@
         )
         :effect (and
             (increase (plaetze) (kapazitaet ?r))
+            (increase (gewinn) (*(kapazitaet ?r)(gebuehr ?k)))
             (decrease (teilnehmerzahl ?k) (kapazitaet ?r))
             (lehrer-unterrichtet ?l ?z)
             (raum-ist-belegt ?r ?z)
