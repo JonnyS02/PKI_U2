@@ -22,7 +22,7 @@
     (= (hours_of_work SCHMITZ )0)
     (= (hours_of_work MEYER )0)
     (= (hours_of_work FISCHER )0)
-    
+
     (=(travel_duration) 30)
     
     (at WAREHOUSE1 SPANDAU)
@@ -44,27 +44,27 @@
     (hasDrivingLicence SCHMITZ)
 
 
-    (at PARCEL1 WAREHOUSE1)
-    (at PARCEL2 WAREHOUSE1)
-    (at PARCEL3 WAREHOUSE1)
-    (at PARCEL4 WAREHOUSE1)
-    (at PARCEL5 WAREHOUSE1)
-    (at PARCEL6 WAREHOUSE1)
-    (at PARCEL7 WAREHOUSE1)
-    (at PARCEL8 WAREHOUSE1)
+    (parcel_in_warehouse PARCEL1 WAREHOUSE1)
+    (parcel_in_warehouse PARCEL2 WAREHOUSE1)
+    (parcel_in_warehouse PARCEL3 WAREHOUSE1)
+    (parcel_in_warehouse PARCEL4 WAREHOUSE1)
+    (parcel_in_warehouse PARCEL5 WAREHOUSE1)
+    (parcel_in_warehouse PARCEL6 WAREHOUSE1)
+    (parcel_in_warehouse PARCEL7 WAREHOUSE1)
+    (parcel_in_warehouse PARCEL8 WAREHOUSE1)
 
 )
 
 (:goal (and
     ;todo: put the goal condition here
-    (at PARCEL1 WAREHOUSE2)
-    (at PARCEL3 WAREHOUSE2)
-    (at PARCEL4 WAREHOUSE2)
-    (at PARCEL5 WAREHOUSE2)
-    (at PARCEL7 WAREHOUSE3)
-    (at PARCEL2 WAREHOUSE4)
-    (at PARCEL6 WAREHOUSE4)
-    (at PARCEL8 WAREHOUSE4)
+    (parcel_in_warehouse PARCEL1 WAREHOUSE2)
+    (parcel_in_warehouse PARCEL3 WAREHOUSE2)
+    (parcel_in_warehouse PARCEL4 WAREHOUSE2)
+    (parcel_in_warehouse PARCEL5 WAREHOUSE2)
+    (parcel_in_warehouse PARCEL7 WAREHOUSE3)
+    (parcel_in_warehouse PARCEL2 WAREHOUSE4)
+    (parcel_in_warehouse PARCEL6 WAREHOUSE4)
+    (parcel_in_warehouse PARCEL8 WAREHOUSE4)
    
 
 ))
