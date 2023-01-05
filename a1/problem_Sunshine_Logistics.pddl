@@ -3,9 +3,8 @@
 (:objects 
     PARCEL1 PARCEL2 PARCEL3 PARCEL4 PARCEL5 PARCEL6 PARCEL7 PARCEL8 - parcel
     WAREHOUSE1 WAREHOUSE2 WAREHOUSE3 WAREHOUSE4 WAREHOUSE5 - warehouse
-    TRUCk1 TRUCK2 - truck
-    BERGER SCHMITZ MEYER - driver
-    FISCHER - boss
+    TRUCK1 TRUCK2 - truck
+    BERGER SCHMITZ MEYER FISCHER - staff 
     SPANDAU PANKOW LICHTENBERG NEUKOELLN - location
 )   
 
@@ -15,6 +14,16 @@
     (= (distance_from_spandau_to_location PANKOW) 15)
     (= (distance_from_spandau_to_location LICHTENBERG) 26)
     (= (distance_from_spandau_to_location NEUKOELLN) 25)
+
+    (= (kilometers_travelled TRUCK1) 0)
+    (= (kilometers_travelled TRUCK2) 0)
+
+    (= (hours_of_work BERGER )0)
+    (= (hours_of_work SCHMITZ )0)
+    (= (hours_of_work MEYER )0)
+    (= (hours_of_work FISCHER )0)
+    
+    (=(travel_duration) 30)
     
     (at WAREHOUSE1 SPANDAU)
     (at WAREHOUSE2 LICHTENBERG)
