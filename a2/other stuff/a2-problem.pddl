@@ -9,13 +9,10 @@
 
     )
     (:init
+        (=(kurs-Anzahl)0)
+        (=(gewinn)0)
         (=(plaetze)0)
-        (ist-nachmittag Tag1Nachmittag)
-        (ist-nachmittag Tag2Nachmittag)
-        (ist-nachmittag Tag3Nachmittag)
-        (ist-nachmittag Tag4Nachmittag)
-        (ist-nachmittag Tag5Nachmittag)
-
+        
         (lehrer-kann-unterrichten Ahorn EDV_01)
         (lehrer-kann-unterrichten Ahorn EDV_02)
         (lehrer-kann-unterrichten Eiche EDV_02)
@@ -31,23 +28,24 @@
         (=(teilnehmerzahl Malerei) 105)
         (=(teilnehmerzahl Tonformen) 39)
 
-        (=(kapazitaet Raum01) 10)
-        (=(kapazitaet Raum02) 12)
-        (=(kapazitaet Raum03) 8)
-        (=(kapazitaet Raum04) 5)
+        (=(kapazitaet-raum Raum01) 10)
+        (=(kapazitaet-raum Raum02) 12)
+        (=(kapazitaet-raum Raum03) 8)
+        (=(kapazitaet-raum Raum04) 5)
+
+        (=(gebuehren-kurs EDV_01)20)
+        (=(gebuehren-kurs EDV_02)30)
+        (=(gebuehren-kurs Webdesign)25)
+        (=(gebuehren-kurs Malerei)30)
+        (=(gebuehren-kurs Tonformen)50)
 
     )
     (:goal
         (and
-            (forall
-                (?l - lehrer)
-                (
-                forall(?z - zeitslot)
-                    (lehrer-unterrichtet ?l ?z)
-                ))
+            (=(kurs-Anzahl)40)
         )
     )
     (:metric maximize
-        (plaetze)
+       ; (gewinn)
     )
 )

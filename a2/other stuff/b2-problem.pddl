@@ -10,13 +10,7 @@
     )
     (:init
         (=(gewinn)0)
-        (=(plaetze)0)
-
-        (ist-nachmittag Tag1Nachmittag)
-        (ist-nachmittag Tag2Nachmittag)
-        (ist-nachmittag Tag3Nachmittag)
-        (ist-nachmittag Tag4Nachmittag)
-        (ist-nachmittag Tag5Nachmittag)
+        (=(kurse)0)
 
         (lehrer-kann-unterrichten Ahorn EDV_01)
         (lehrer-kann-unterrichten Ahorn EDV_02)
@@ -38,25 +32,40 @@
         (=(kapazitaet Raum03) 8)
         (=(kapazitaet Raum04) 5)
 
-        ;b
-        (=(gebuehr EDV_01)0)
+        (=(gebuehr EDV_01)20)
         (=(gebuehr EDV_02)30)
-        (=(gebuehr Webdesign)0)
-        (=(gebuehr Malerei)0)
-        (=(gebuehr Tonformen)0)
+        (=(gebuehr Webdesign)25)
+        (=(gebuehr Malerei)30)
+        (=(gebuehr Tonformen)50)
+
+        (=(anzahl-termine-lehrer Ahorn)0)
+        (=(anzahl-termine-lehrer Eiche)0)
+        (=(anzahl-termine-lehrer Birke)0)
+        (=(anzahl-termine-lehrer Kiefer)0)
+
+        (lehrer-verplant Birke Tag1Nachmittag)
+        (lehrer-verplant Birke Tag2Nachmittag)
+        (lehrer-verplant Birke Tag3Nachmittag)
+        (lehrer-verplant Birke Tag4Nachmittag)
+        (lehrer-verplant Birke Tag5Nachmittag)
+
+        (lehrer-verplant Kiefer Tag1Vormittag)
+        (lehrer-verplant Kiefer Tag2Vormittag)
+        (lehrer-verplant Kiefer Tag3Vormittag)
+        (lehrer-verplant Kiefer Tag4Vormittag)
+        (lehrer-verplant Kiefer Tag5Vormittag)
 
     )
     (:goal
         (and
-            (forall
-                (?l - lehrer)
-                (
-                forall(?z - zeitslot)
-                    (lehrer-unterrichtet ?l ?z)
-                ))
+            ;(=(kurse)40)
+            (=(anzahl-termine-lehrer Ahorn)7)
+            (=(anzahl-termine-lehrer Eiche)5)
+            (=(anzahl-termine-lehrer Birke)4)
+            (=(anzahl-termine-lehrer Kiefer)5)
         )
     )
     (:metric maximize
-        (gewinn)
+         (gewinn)       
     )
 )
