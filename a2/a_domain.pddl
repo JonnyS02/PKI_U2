@@ -6,13 +6,13 @@
 
 	(:types
 		staff warehouse truck location parcel
+		driver - staff
 	)
 
 	(:predicates
 		(at ?o - object ?l - location)
 		(parcel_in_truck ?p - parcel ?t - truck)
 		(parcel_in_warehouse ?p - parcel ?w - warehouse)
-		(hasDrivingLicence ?s - staff)
 		(location_checked ?l - location)
 	)
 
@@ -39,14 +39,13 @@
 	)
 
 	(:action transport
-		:parameters (?t - truck ?s - staff ?from - location ?to - location)
+		:parameters (?t - truck ?s - driver ?from - location ?to - location)
 		:precondition (and
 			(not(= ?from ?to))
 			(not(location_checked ?to))
 			(= ?from Spandau)
 			(at ?s ?from)
 			(at ?t ?from)
-			(hasDrivingLicence ?s)
 		)
 		:effect (and
 			(increase (kilometers_travelled ?t) (distance_to_spandau ?to))
@@ -74,14 +73,13 @@
 		)
 	)
 	(:action return
-		:parameters (?t - truck ?s - staff ?l - location)
+		:parameters (?t - truck ?s - driver ?l - location)
 		:precondition (and
 			(at ?s ?l)
 			(at ?t ?l)
 			(not(= ?l Spandau))
 			(forall(?p - parcel)
 				(not(parcel_in_truck ?p ?t)))
-			(hasDrivingLicence ?s)
 		)
 		:effect (and
 			(increase (kilometers_travelled ?t) (distance_to_spandau ?l))

@@ -5,7 +5,8 @@
         Parcel1 Parcel2 Parcel3 Parcel4 Parcel5 Parcel6 Parcel7 Parcel8 - parcel
         Warehouse1 Warehouse2 Warehouse3 Warehouse4 Warehouse5 - warehouse
         Truck1 Truck2 Truck3 - truck
-        Fischer Berger Schmitz Meyer - staff
+        Fischer - staff
+        Berger Schmitz Meyer - driver
         Spandau Pankow Lichtenberg Neukoellen - location
     )
 
@@ -22,10 +23,6 @@
         (=(minutes_of_work Berger)0)
         (=(minutes_of_work Schmitz)0)
         (=(minutes_of_work Meyer)0)
-
-        (hasDrivingLicence Berger)
-        (hasDrivingLicence Schmitz)
-        (hasDrivingLicence Meyer)
 
         (at Truck1 Spandau)
         (at Truck2 Spandau)
