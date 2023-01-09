@@ -55,7 +55,6 @@
 
     (:goal
         (and
-        
             (parcel_in_warehouse Parcel1 Warehouse2)
             (parcel_in_warehouse Parcel3 Warehouse2)
             (parcel_in_warehouse Parcel4 Warehouse2)
