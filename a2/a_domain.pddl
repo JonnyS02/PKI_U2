@@ -13,7 +13,6 @@
 		(at ?o - object ?l - location)
 		(parcel_in_truck ?p - parcel ?t - truck)
 		(parcel_in_warehouse ?p - parcel ?w - warehouse)
-		(location_checked ?l - location)
 	)
 
 	(:functions
@@ -26,7 +25,7 @@
 	(:action load
 		:parameters (?t - truck ?s - staff ?p - parcel ?l - location ?w - warehouse)
 		:precondition (and
-			(=?s Fischer)
+			(forall (?st - staff)(<=(minutes_of_work ?s)(minutes_of_work ?st)) )
 			(at ?t ?l)
 			(at ?s ?l)
 			(at ?w ?l)
@@ -41,16 +40,14 @@
 	(:action transport
 		:parameters (?t - truck ?s - driver ?from - location ?to - location)
 		:precondition (and
-			(not(= ?from ?to))
-			(not(location_checked ?to))
-			(= ?from Spandau)
+			(forall (?d - driver)(<=(minutes_of_work ?s)(minutes_of_work ?d)) )
+			(exists (?p - parcel)(parcel_in_truck ?p ?t) )
 			(at ?s ?from)
 			(at ?t ?from)
 		)
 		:effect (and
 			(increase (kilometers_travelled ?t) (distance_to_spandau ?to))
 			(increase (minutes_of_work ?s) (travel_duration))
-			(location_checked ?to)
 			(not (at ?s ?from))
 			(not (at ?t ?from))
 			(at ?s ?to)
@@ -63,7 +60,6 @@
 			(at ?t ?l)
 			(at ?s ?l)
 			(at ?w ?l)
-			(not(= ?l Spandau))
 			(parcel_in_truck ?p ?t)
 		)
 		:effect (and
@@ -77,7 +73,6 @@
 		:precondition (and
 			(at ?s ?l)
 			(at ?t ?l)
-			(not(= ?l Spandau))
 			(forall(?p - parcel)
 				(not(parcel_in_truck ?p ?t)))
 		)
