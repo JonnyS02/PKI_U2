@@ -1,6 +1,6 @@
 
-(define (problem a_problem)
-    (:domain a_domain)
+(define (problem bu_problem)
+    (:domain bu_domain)
     (:objects
         Parcel1 Parcel2 Parcel3 Parcel4 Parcel5 Parcel6 Parcel7 Parcel8 - parcel
         Warehouse1 Warehouse2 Warehouse3 Warehouse4 Warehouse5 - warehouse

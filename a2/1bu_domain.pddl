@@ -1,6 +1,6 @@
 ;Header and description
 
-(define (domain a_domain)
+(define (domain bu_domain)
 
 	(:requirements :strips :fluents :typing :negative-preconditions :equality)
 
