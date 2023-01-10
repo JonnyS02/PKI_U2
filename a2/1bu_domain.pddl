@@ -5,7 +5,7 @@
 	(:requirements :strips :fluents :typing :negative-preconditions :equality)
 
 	(:types
-		staff warehouse truck location parcel
+		staff warehouse truck location parcel - object
 		driver - staff
 	)
 
