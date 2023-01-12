@@ -1,10 +1,11 @@
 
-(define (problem a_problem)
-    (:domain a_domain)
+(define (problem b_problem)
+    (:domain b_domain)
     (:objects
         Parcel1 Parcel2 Parcel3 Parcel4 Parcel5 Parcel6 Parcel7 Parcel8 - parcel
         Warehouse1 Warehouse2 Warehouse3 Warehouse4 Warehouse5 - warehouse
-        Truck1 Truck2 Truck3 - truck
+        Truck1 Truck2  - truck
+        Truck3 - truck
         Fischer - staff
         Berger Schmitz Meyer - driver
         Spandau Pankow Lichtenberg Neukoellen - location
@@ -12,21 +13,25 @@
 
     (:init
 
+        (=(deliveries Truck1)0)
+        (=(deliveries Truck2)0)
+        (=(deliveries Truck3)0)
+
         (=(travel_duration)30)
 
-        (at Fischer Spandau)
-        (at Berger Spandau)
-        (at Schmitz Spandau)
-        (at Meyer Spandau)
+        (at Fischer Warehouse1)
+        (at Berger Warehouse1)
+        (at Schmitz Warehouse1)
+        (at Meyer Warehouse1)
 
         (=(minutes_of_work Fischer)0)
         (=(minutes_of_work Berger)0)
         (=(minutes_of_work Schmitz)0)
         (=(minutes_of_work Meyer)0)
 
-        (at Truck1 Spandau)
-        (at Truck2 Spandau)
-        (at Truck3 Spandau)
+        (at Truck1 Warehouse1)
+        (at Truck2 Warehouse1)
+        (at Truck3 Warehouse1)
 
         (=(kilometers_travelled Truck1)14725)
         (=(kilometers_travelled Truck2)14690)
@@ -67,4 +72,5 @@
             (parcel_in_warehouse Parcel8 Warehouse4)
         )
     )
+   ; (:metric minimize (kilometers_travelled Truck3))
 )

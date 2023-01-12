@@ -1,5 +1,5 @@
-(define (problem volkshochschule-planung-woche1-b)
-    (:domain volkshochschule-planung-b)
+(define (problem volkshochschule-planung-woche1-bu)
+    (:domain volkshochschule-planung-bu)
     (:objects
         EDV_01 EDV_02 Webdesign Malerei Tonformen - kurs
         Ahorn Eiche Birke Kiefer - lehrer
@@ -55,7 +55,6 @@
         ;(lehrer-verplant Kiefer Tag4Vormittag)
         ;(lehrer-verplant Kiefer Tag5Vormittag)
 
-        (=(gewinn_maximieren)0) ;auf 1 setzen für 2b
     )
     (:goal
         (and ;2a
@@ -68,7 +67,7 @@
             ;(=(anzahl-termine-lehrer Kiefer)5)
         )
     ) ;2b
-   ; (:metric maximize
+    ;(:metric maximize
     ; (gewinn)      
     ;)
 )
