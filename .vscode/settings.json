@@ -7,5 +7,6 @@
             "title": "enhsp.jar",
             "syntax": "$(planner) -o $(domain) -f $(problem) $(options)"
         }
-    ]
+    ],
+    "pddl.selectedPlanner": "enhsp.jar"
 }

@@ -1,5 +1,5 @@
 ;Header and description
-
+;-s gbfs -h hmax
 (define (domain b_domain)
 
 	(:requirements :strips :fluents :typing :negative-preconditions :equality)
@@ -17,6 +17,7 @@
 	)
 
 	(:functions
+		(total_work)
 		(deliveries ?t - truck)
 		(minutes_of_work ?s - staff)
 		(kilometers_travelled ?t - truck)
@@ -28,12 +29,14 @@
 		:parameters (?t - truck ?s - staff ?p - parcel ?w - warehouse)
 		:precondition (and
 			;(=?s Fischer)
+			(forall(?st - staff)(<=(minutes_of_work ?s)(minutes_of_work ?st)))
 			(at ?t ?w)
 			(at ?s ?w)
 			(parcel_in_warehouse ?p ?w)
 		)
 		:effect (and
 			(increase (minutes_of_work ?s) 10)
+			(increase (total_work) 10)
 			(not(parcel_in_warehouse ?p ?w))
 			(parcel_in_truck ?p ?t))
 	)
@@ -54,6 +57,7 @@
 			(increase (kilometers_travelled ?t) (distance_to_spandau ?l))
 			(increase (deliveries ?t) 1)
 			(increase (minutes_of_work ?s) (travel_duration))
+			(increase (total_work) (travel_duration))
 			(not (at ?s Warehouse1))
 			(not (at ?t Warehouse1))
 			(at ?s ?w)
@@ -70,6 +74,7 @@
 		)
 		:effect (and
 			(increase (minutes_of_work ?s) 10)
+			(increase (total_work) 10)
 			(parcel_in_warehouse ?p ?w)
 			(not(parcel_in_truck ?p ?t))
 		)
@@ -87,6 +92,7 @@
 		:effect (and
 			(increase (kilometers_travelled ?t) (distance_to_spandau ?l))
 			(increase (minutes_of_work ?s) (travel_duration))
+			(increase (total_work) (travel_duration))
 			(not (at ?s ?w))
 			(not (at ?t ?w))
 			(at ?s Warehouse1)
