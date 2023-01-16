@@ -18,7 +18,7 @@
 
 	(:functions
 		(total_work)
-		(deliveries ?t - truck)
+		(trips ?t - truck)
 		(minutes_of_work ?s - staff)
 		(kilometers_travelled ?t - truck)
 		(travel_duration)
@@ -45,7 +45,7 @@
 		:parameters (?t - truck ?s - driver  ?w - warehouse ?l - location)
 		:precondition (and
 			(forall(?d - driver)(<=(minutes_of_work ?s)(minutes_of_work ?d)))
-			(forall(?tr - truck)(<=(deliveries ?t)(deliveries ?tr)))
+			(forall(?tr - truck)(<=(trips ?t)(trips ?tr)))
 			(not(= Warehouse1 ?w))
 			(not(warehouse_checked ?w))
 			(at ?s Warehouse1)
@@ -55,7 +55,7 @@
 		:effect (and
 			(warehouse_checked ?w)
 			(increase (kilometers_travelled ?t) (distance_to_spandau ?l))
-			(increase (deliveries ?t) 1)
+			(increase (trips ?t) 1)
 			(increase (minutes_of_work ?s) (travel_duration))
 			(increase (total_work) (travel_duration))
 			(not (at ?s Warehouse1))
@@ -90,6 +90,7 @@
 				(not(parcel_in_truck ?p ?t)))
 		)
 		:effect (and
+			(increase (trips ?t) 1)
 			(increase (kilometers_travelled ?t) (distance_to_spandau ?l))
 			(increase (minutes_of_work ?s) (travel_duration))
 			(increase (total_work) (travel_duration))

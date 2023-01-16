@@ -13,9 +13,9 @@
 
     (:init
 
-        (=(deliveries Truck1)0)
-        (=(deliveries Truck2)0)
-;        (=(deliveries Truck3)0)
+        (=(trips Truck1)0)
+        (=(trips Truck2)0)
+;        (=(trips Truck3)0)
 
         (=(travel_duration)30)
 
