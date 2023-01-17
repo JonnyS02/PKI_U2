@@ -1,5 +1,7 @@
 (define (problem volkshochschule-planung-woche1-b)
+
     (:domain volkshochschule-planung-b)
+
     (:objects
         EDV_01 EDV_02 Webdesign Malerei Tonformen - kurs
         Ahorn Eiche Birke Kiefer - lehrer
@@ -8,6 +10,7 @@
         Tag1Nachmittag Tag2Nachmittag Tag3Nachmittag Tag4Nachmittag Tag5Nachmittag - zeitslot
 
     )
+
     (:init
         (=(gewinn)0)
         (=(kurse)0)
@@ -55,20 +58,16 @@
         ;(lehrer-verplant Kiefer Tag4Vormittag)
         ;(lehrer-verplant Kiefer Tag5Vormittag)
 
-        (=(gewinn_maximieren)0) ;auf 1 setzen für 2b
+        (=(gewinn_maximieren)1)
     )
+    
     (:goal
-        (and ;2a
-            (=(kurse)40)
-
-            ;2c
-            ;(=(anzahl-termine-lehrer Ahorn)7)
-            ;(=(anzahl-termine-lehrer Eiche)5)
-            ;(=(anzahl-termine-lehrer Birke)4)
-            ;(=(anzahl-termine-lehrer Kiefer)5)
+        (and 
+            (=(kurse)40) 
         )
-    ) ;2b
-   ; (:metric maximize
-    ; (gewinn)      
-    ;)
+    ) 
+    
+    (:metric maximize
+         (gewinn)      
+    )
 )

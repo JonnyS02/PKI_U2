@@ -1,5 +1,7 @@
-(define (problem volkshochschule-planung-woche1-a)
-    (:domain volkshochschule-planung-a)
+(define (problem volkshochschule-planung-woche1-c)
+
+    (:domain volkshochschule-planung-c)
+    
     (:objects
         EDV_01 EDV_02 Webdesign Malerei Tonformen - kurs
         Ahorn Eiche Birke Kiefer - lehrer
@@ -9,10 +11,9 @@
 
     )
     (:init
-        (=(kurs-Anzahl)0)
         (=(gewinn)0)
-        (=(plaetze)0)
-        
+        (=(kurse)0)
+
         (lehrer-kann-unterrichten Ahorn EDV_01)
         (lehrer-kann-unterrichten Ahorn EDV_02)
         (lehrer-kann-unterrichten Eiche EDV_02)
@@ -28,24 +29,31 @@
         (=(teilnehmerzahl Malerei) 105)
         (=(teilnehmerzahl Tonformen) 39)
 
-        (=(kapazitaet-raum Raum01) 10)
-        (=(kapazitaet-raum Raum02) 12)
-        (=(kapazitaet-raum Raum03) 8)
-        (=(kapazitaet-raum Raum04) 5)
+        (=(kapazitaet Raum01) 10)
+        (=(kapazitaet Raum02) 12)
+        (=(kapazitaet Raum03) 8)
+        (=(kapazitaet Raum04) 5)
 
-        (=(gebuehren-kurs EDV_01)20)
-        (=(gebuehren-kurs EDV_02)30)
-        (=(gebuehren-kurs Webdesign)25)
-        (=(gebuehren-kurs Malerei)30)
-        (=(gebuehren-kurs Tonformen)50)
+        (=(gebuehr EDV_01)20)
+        (=(gebuehr EDV_02)30)
+        (=(gebuehr Webdesign)25)
+        (=(gebuehr Malerei)30)
+        (=(gebuehr Tonformen)50)
 
+        (=(anzahl-termine-lehrer Ahorn)0)
+        (=(anzahl-termine-lehrer Eiche)0)
+        (=(anzahl-termine-lehrer Birke)0)
+        (=(anzahl-termine-lehrer Kiefer)0)
+
+        (=(gewinn_maximieren)0) 
     )
+    
     (:goal
-        (and
-            (=(kurs-Anzahl)40)
+        (and 
+            (=(anzahl-termine-lehrer Ahorn)7)
+            (=(anzahl-termine-lehrer Eiche)5)
+            (=(anzahl-termine-lehrer Birke)4)
+            (=(anzahl-termine-lehrer Kiefer)5)
         )
-    )
-    (:metric maximize
-       ; (gewinn)
     )
 )

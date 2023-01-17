@@ -1,11 +1,11 @@
+(define (problem c_problem)
 
-(define (problem b_problem)
-    (:domain b_domain)
+    (:domain c_domain)
+    
     (:objects
         Parcel1 Parcel2 Parcel3 Parcel4 Parcel5 Parcel6 Parcel7 Parcel8 - parcel
-        Warehouse1 Warehouse2 Warehouse3 Warehouse4 Warehouse5 - warehouse
+        Warehouse2 Warehouse3 Warehouse4 Warehouse5 - warehouse
         Truck1 Truck2  - truck
-       ; Truck3 - truck
         Fischer - staff
         Berger Schmitz Meyer - driver
         Spandau Pankow Lichtenberg Neukoellen - location
@@ -15,7 +15,6 @@
 
         (=(trips Truck1)0)
         (=(trips Truck2)0)
-;        (=(trips Truck3)0)
 
         (=(travel_duration)30)
 
@@ -31,11 +30,9 @@
 
         (at Truck1 Warehouse1)
         (at Truck2 Warehouse1)
- ;       (at Truck3 Warehouse1)
 
         (=(kilometers_travelled Truck1)14725)
         (=(kilometers_travelled Truck2)14690)
-  ;      (=(kilometers_travelled Truck3)150)
 
         (at Warehouse1 Spandau)
         (at Warehouse2 Lichtenberg)

@@ -1,15 +1,19 @@
-(define (domain volkshochschule-planung-b)
+(define (domain volkshochschule-planung-d)
+
     (:requirements :typing :fluents :conditional-effects :negative-preconditions)
+    
     (:types
         zeitslot kurs raum lehrer
     )
+
     (:predicates
         (lehrer-kann-unterrichten ?l - lehrer ?k - kurs)
         (lehrer-verplant ?l - lehrer ?z - zeitslot)
         (raum-ist-belegt ?r - raum ?z - zeitslot)
     )
+
     (:functions
-    (gewinn_maximieren)
+        (gewinn_maximieren)
         (gewinn)
         (kurse)
         (gebuehr ?k - kurs)

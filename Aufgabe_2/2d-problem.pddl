@@ -1,5 +1,7 @@
-(define (problem volkshochschule-planung-woche1-c)
-    (:domain volkshochschule-planung-c)
+(define (problem volkshochschule-planung-woche1-d)
+
+    (:domain volkshochschule-planung-d)
+    
     (:objects
         EDV_01 EDV_02 Webdesign Malerei Tonformen - kurs
         Ahorn Eiche Birke Kiefer - lehrer
@@ -10,18 +12,7 @@
     )
     (:init
         (=(gewinn)0)
-        (=(plaetze)0)
-
-        (=(lehrer-termine Ahorn)0)
-        (=(lehrer-termine Eiche)0)
-        (=(lehrer-termine Birke)0)
-        (=(lehrer-termine Kiefer)0)
-
-        (ist-nachmittag Tag1Nachmittag)
-        (ist-nachmittag Tag2Nachmittag)
-        (ist-nachmittag Tag3Nachmittag)
-        (ist-nachmittag Tag4Nachmittag)
-        (ist-nachmittag Tag5Nachmittag)
+        (=(kurse)0)
 
         (lehrer-kann-unterrichten Ahorn EDV_01)
         (lehrer-kann-unterrichten Ahorn EDV_02)
@@ -43,36 +34,36 @@
         (=(kapazitaet Raum03) 8)
         (=(kapazitaet Raum04) 5)
 
-        ;b
         (=(gebuehr EDV_01)20)
         (=(gebuehr EDV_02)30)
         (=(gebuehr Webdesign)25)
         (=(gebuehr Malerei)30)
         (=(gebuehr Tonformen)50)
 
-        (lehrer-unterrichtet Birke Tag1Nachmittag)
-        (lehrer-unterrichtet Birke Tag2Nachmittag)
-        (lehrer-unterrichtet Birke Tag3Nachmittag)
-        (lehrer-unterrichtet Birke Tag4Nachmittag)
-        (lehrer-unterrichtet Birke Tag5Nachmittag)
+        (=(anzahl-termine-lehrer Ahorn)0)
+        (=(anzahl-termine-lehrer Eiche)0)
+        (=(anzahl-termine-lehrer Birke)0)
+        (=(anzahl-termine-lehrer Kiefer)0)
 
-        (lehrer-unterrichtet Kiefer Tag1Vormittag)
-        (lehrer-unterrichtet Kiefer Tag2Vormittag)
-        (lehrer-unterrichtet Kiefer Tag3Vormittag)
-        (lehrer-unterrichtet Kiefer Tag4Vormittag)
-        (lehrer-unterrichtet Kiefer Tag5Vormittag)
+        (lehrer-verplant Birke Tag1Nachmittag)
+        (lehrer-verplant Birke Tag2Nachmittag)
+        (lehrer-verplant Birke Tag3Nachmittag)
+        (lehrer-verplant Birke Tag4Nachmittag)
+        (lehrer-verplant Birke Tag5Nachmittag)
+        (lehrer-verplant Kiefer Tag1Vormittag)
+        (lehrer-verplant Kiefer Tag2Vormittag)
+        (lehrer-verplant Kiefer Tag3Vormittag)
+        (lehrer-verplant Kiefer Tag4Vormittag)
+        (lehrer-verplant Kiefer Tag5Vormittag)
 
-
+        (=(gewinn_maximieren)0) 
     )
     (:goal
         (and
-            (=(lehrer-termine Ahorn)7)
-            (=(lehrer-termine Eiche)5)
-            (=(lehrer-termine Birke)4)
-            (=(lehrer-termine Kiefer)5)
+            (=(anzahl-termine-lehrer Ahorn)7)
+            (=(anzahl-termine-lehrer Eiche)5)
+            (=(anzahl-termine-lehrer Birke)4)
+            (=(anzahl-termine-lehrer Kiefer)5)
         )
-    )
-    (:metric maximize
-        (plaetze)
     )
 )

@@ -1,12 +1,14 @@
-;Header and description
-;-s gbfs -h hmax
-(define (domain b_domain)
+(define (domain d_domain)
 
 	(:requirements :strips :fluents :typing :negative-preconditions :equality)
 
 	(:types
 		staff warehouse truck location parcel - object
 		driver - staff
+	)
+
+	(:constants
+		Warehouse1 - warehouse
 	)
 
 	(:predicates
@@ -28,7 +30,7 @@
 	(:action load
 		:parameters (?t - truck ?s - staff ?p - parcel ?w - warehouse)
 		:precondition (and
-			;(=?s Fischer)
+			;(=?s Fischer) ;Für eine äußerst ausgewogene Auslastung, könnte man Fischer alle load-Aufgaben standardmäßig zuordnen (macht die Lösung natürlich weniger generisch)
 			(forall(?st - staff)(<=(minutes_of_work ?s)(minutes_of_work ?st)))
 			(at ?t ?w)
 			(at ?s ?w)
@@ -64,6 +66,7 @@
 			(at ?t ?w)
 		)
 	)
+
 	(:action unload
 		:parameters (?t - truck ?s - staff ?p - parcel ?w - warehouse)
 		:precondition (and
@@ -79,6 +82,7 @@
 			(not(parcel_in_truck ?p ?t))
 		)
 	)
+
 	(:action return_to_spandau
 		:parameters (?t - truck ?s - driver ?w - warehouse ?l - location)
 		:precondition (and
@@ -86,8 +90,7 @@
 			(at ?s ?w)
 			(at ?t ?w)
 			(at ?w ?l)
-			(forall(?p - parcel)
-				(not(parcel_in_truck ?p ?t)))
+			(forall(?p - parcel)(not(parcel_in_truck ?p ?t)))
 		)
 		:effect (and
 			(increase (trips ?t) 1)
@@ -100,5 +103,4 @@
 			(at ?t Warehouse1)
 		)
 	)
-
 )

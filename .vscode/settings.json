@@ -5,7 +5,7 @@
             "canConfigure": true,
             "path": "enhsp-dist\\enhsp.jar",
             "title": "enhsp.jar",
-            "syntax": "$(planner) -o $(domain) -f $(problem) $(options)"
+            "syntax": "$(planner) -o $(domain) -f $(problem) $(options) -s gbfs -h hmax"
         }
     ],
     "pddl.selectedPlanner": "enhsp.jar"
