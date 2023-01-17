@@ -70,7 +70,7 @@
             (parcel_in_warehouse Parcel8 Warehouse4)
         )
     )
-   ;(:metric maximize (kilometers_travelled Truck1)) OOM
+   ;(:metric maximize (kilometers_travelled Truck3)) OOM
    ;(:metric minimize (+(kilometers_travelled Truck1)(kilometers_travelled Truck2)) OOM
    ;(:metric minimize (+(minutes_of_work Meyer)(+(minutes_of_work Berger)(minutes_of_work Schmitz)))) Keine Verbesserung am Ergebnis
 )

@@ -30,7 +30,6 @@
 	(:action load
 		:parameters (?t - truck ?s - staff ?p - parcel ?w - warehouse)
 		:precondition (and
-			(forall(?st - staff)(<=(minutes_of_work ?s)(minutes_of_work ?st)))
 			(at ?t ?w)
 			(at ?s ?w)
 			(parcel_in_warehouse ?p ?w)

@@ -58,6 +58,11 @@
         ;(lehrer-verplant Kiefer Tag4Vormittag)
         ;(lehrer-verplant Kiefer Tag5Vormittag)
 
+        ;Es wurden 2 Aktionen zur Realisierung des Problems mit verschiedenen Ansätzen implementiert.
+        ;Die folgende Funktion agiert als eine Art Schalter: 
+        ;(=(gewinn_maximieren)0) -> belegen0 wird genutzt, (=(gewinn_maximieren)1) -> belegen1 wird genutzt.
+        ;Eine genaue Erklärung steht in der Beschreibung.
+
         (=(gewinn_maximieren)1)
     )
     

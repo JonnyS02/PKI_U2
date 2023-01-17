@@ -5,8 +5,7 @@
     (:objects
         Parcel1 Parcel2 Parcel3 Parcel4 Parcel5 Parcel6 Parcel7 Parcel8 - parcel
         Warehouse2 Warehouse3 Warehouse4 Warehouse5 - warehouse
-        Truck1 Truck2  - truck
-        Truck3 - truck
+        Truck1 Truck2 Truck3 - truck
         Fischer - staff
         Berger Schmitz Meyer - driver
         Spandau Pankow Lichtenberg Neukoellen - location
@@ -56,12 +55,14 @@
         (parcel_in_warehouse Parcel6 Warehouse1)
         (parcel_in_warehouse Parcel7 Warehouse1)
         (parcel_in_warehouse Parcel8 Warehouse1)
+
         (=(total_work)0)
     )
 
     (:goal
         (and
             ;(>=(minutes_of_work Fischer)(/(total_work)4)) OOM
+            (>=(minutes_of_work Fischer) 60)
             (parcel_in_warehouse Parcel1 Warehouse2)
             (parcel_in_warehouse Parcel3 Warehouse2)
             (parcel_in_warehouse Parcel4 Warehouse2)

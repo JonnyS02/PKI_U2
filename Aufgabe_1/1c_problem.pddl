@@ -58,6 +58,7 @@
     (:goal
         (and
             ;(>=(minutes_of_work Fischer)(/(total_work)4)) OOM
+            (>=(minutes_of_work Fischer) 60)
             (parcel_in_warehouse Parcel1 Warehouse2)
             (parcel_in_warehouse Parcel3 Warehouse2)
             (parcel_in_warehouse Parcel4 Warehouse2)
