@@ -93,7 +93,6 @@
 			(forall(?p - parcel)(not(parcel_in_truck ?p ?t)))
 		)
 		:effect (and
-			(increase (trips ?t) 1)
 			(increase (kilometers_travelled ?t) (distance_to_spandau ?l))
 			(increase (minutes_of_work ?s) (travel_duration))
 			(increase (total_work) (travel_duration))
