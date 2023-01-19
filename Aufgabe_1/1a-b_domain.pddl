@@ -12,7 +12,7 @@
 	)
 
 	(:predicates
-		(at ?o - object ?l - location)
+		(at ?x - object ?y - object)
 		(parcel_in_truck ?p - parcel ?t - truck)
 		(parcel_in_warehouse ?p - parcel ?w - warehouse)
 		(warehouse_checked ?w - warehouse)
