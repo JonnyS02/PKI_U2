@@ -16,9 +16,11 @@
 		(parcel_in_truck ?p - parcel ?t - truck)
 		(parcel_in_warehouse ?p - parcel ?w - warehouse)
 		(warehouse_checked ?w - warehouse)
+		(parcel_loaded_at ?p - parcel ?w - warehouse)
 	)
 
 	(:functions
+		(parcels_loaded ?s)
 		(total_work)
 		(trips ?t - truck)
 		(minutes_of_work ?s - staff)
@@ -31,12 +33,15 @@
 		:parameters (?t - truck ?s - staff ?p - parcel ?w - warehouse)
 		:precondition (and
 			;(=?s Fischer) ;Für eine äußerst ausgewogene Auslastung, könnte man Fischer alle load-Aufgaben standardmäßig zuordnen (macht die Lösung natürlich weniger generisch)
-			(forall(?st - staff)(<=(minutes_of_work ?s)(minutes_of_work ?st)))
+			;(forall(?st - staff)(<=(minutes_of_work ?s)(minutes_of_work ?st)))
+			(forall(?st - staff)(<=(parcels_loaded ?s)(parcels_loaded ?st)))
 			(at ?t ?w)
 			(at ?s ?w)
 			(parcel_in_warehouse ?p ?w)
 		)
 		:effect (and
+			(parcel_loaded_at ?p ?w)
+			(increase (parcels_loaded ?s) 1)
 			(increase (minutes_of_work ?s) 10)
 			(increase (total_work) 10)
 			(not(parcel_in_warehouse ?p ?w))
@@ -74,6 +79,8 @@
 			(at ?t ?w)
 			(at ?s ?w)
 			(parcel_in_truck ?p ?t)
+			(not (parcel_loaded_at ?p ?w))
+
 		)
 		:effect (and
 			(increase (minutes_of_work ?s) 10)

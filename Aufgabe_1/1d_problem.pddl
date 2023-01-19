@@ -12,6 +12,10 @@
     )
 
     (:init
+       (=(parcels_loaded Fischer)0)
+       (=(parcels_loaded Berger)0)
+       (=(parcels_loaded Schmitz)0)
+       (=(parcels_loaded Meyer)0)
 
         (=(trips Truck1)0)
         (=(trips Truck2)0)
