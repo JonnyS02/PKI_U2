@@ -12,10 +12,10 @@
     )
 
     (:init
-       (=(parcels_loaded Fischer)0)
-       (=(parcels_loaded Berger)0)
-       (=(parcels_loaded Schmitz)0)
-       (=(parcels_loaded Meyer)0)
+       (=(parcels_handled Fischer)-4)
+       (=(parcels_handled Berger)0)
+       (=(parcels_handled Schmitz)0)
+       (=(parcels_handled Meyer)0)
 
         (=(trips Truck1)0)
         (=(trips Truck2)0)
@@ -51,32 +51,38 @@
         (=(distance_to_spandau Lichtenberg)26)
         (=(distance_to_spandau Neukoellen)25)
 
-        (parcel_in_warehouse Parcel1 Warehouse1)
-        (parcel_in_warehouse Parcel2 Warehouse1)
-        (parcel_in_warehouse Parcel3 Warehouse1)
-        (parcel_in_warehouse Parcel4 Warehouse1)
-        (parcel_in_warehouse Parcel5 Warehouse1)
-        (parcel_in_warehouse Parcel6 Warehouse1)
-        (parcel_in_warehouse Parcel7 Warehouse1)
-        (parcel_in_warehouse Parcel8 Warehouse1)
+        (at Parcel1 Warehouse1)
+        (at Parcel2 Warehouse1)
+        (at Parcel3 Warehouse1)
+        (at Parcel4 Warehouse1)
+        (at Parcel5 Warehouse1)
+        (at Parcel6 Warehouse1)
+        (at Parcel7 Warehouse1)
+        (at Parcel8 Warehouse1)
 
         (=(total_work)0)
     )
 
     (:goal
         (and
+
+       ;(=(parcels_handled Fischer)4) OOM
+       ;(=(parcels_handled Berger)4)
+       ;(=(parcels_handled Schmitz)4)
+       ;(=(parcels_handled Meyer)4)
+
             ;(>=(minutes_of_work Fischer)(/(total_work)4)) OOM
             ;(>=(minutes_of_work Fischer) 60)
-            (parcel_in_warehouse Parcel1 Warehouse2)
-            (parcel_in_warehouse Parcel3 Warehouse2)
-            (parcel_in_warehouse Parcel4 Warehouse2)
-            (parcel_in_warehouse Parcel5 Warehouse2)
+            (at Parcel1 Warehouse2)
+            (at Parcel3 Warehouse2)
+            (at Parcel4 Warehouse2)
+            (at Parcel5 Warehouse2)
 
-            (parcel_in_warehouse Parcel7 Warehouse3)
+            (at Parcel7 Warehouse3)
 
-            (parcel_in_warehouse Parcel2 Warehouse4)
-            (parcel_in_warehouse Parcel6 Warehouse4)
-            (parcel_in_warehouse Parcel8 Warehouse4)
+            (at Parcel2 Warehouse4)
+            (at Parcel6 Warehouse4)
+            (at Parcel8 Warehouse4)
         )
     )
    ;(:metric maximize (kilometers_travelled Truck1)) OOM

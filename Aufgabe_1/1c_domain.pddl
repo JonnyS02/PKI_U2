@@ -13,34 +13,37 @@
 
 	(:predicates
 		(at ?x - object ?y - object)
-		(parcel_in_truck ?p - parcel ?t - truck)
-		(parcel_in_warehouse ?p - parcel ?w - warehouse)
 		(warehouse_checked ?w - warehouse)
+		(parcel_loaded_at ?p - parcel ?w - warehouse)
 	)
 
 	(:functions
-		(total_work)
 		(trips ?t - truck)
 		(minutes_of_work ?s - staff)
 		(kilometers_travelled ?t - truck)
 		(travel_duration)
 		(distance_to_spandau ?l - location)
+
+		(parcels_handled ?s)
 	)
 
 	(:action load
 		:parameters (?t - truck ?s - staff ?p - parcel ?w - warehouse)
 		:precondition (and
-			;(=?s Fischer) ;Für eine äußerst ausgewogene Auslastung, könnte man Fischer alle load-Aufgaben standardmäßig zuordnen (macht die Lösung natürlich weniger generisch)
-			(forall(?st - staff)(<=(minutes_of_work ?s)(minutes_of_work ?st)))
 			(at ?t ?w)
 			(at ?s ?w)
-			(parcel_in_warehouse ?p ?w)
+			(at ?p ?w)
+
+			(forall(?st - staff)(<=(parcels_handled ?s)(parcels_handled ?st)))
 		)
 		:effect (and
+			(parcel_loaded_at ?p ?w)
+			(not(at ?p ?w))
+			(at ?p ?t)
+
+			(increase (parcels_handled ?s) 1)
 			(increase (minutes_of_work ?s) 10)
-			(increase (total_work) 10)
-			(not(parcel_in_warehouse ?p ?w))
-			(parcel_in_truck ?p ?t))
+		)			
 	)
 
 	(:action transport_from_spandau
@@ -59,7 +62,6 @@
 			(increase (kilometers_travelled ?t) (distance_to_spandau ?l))
 			(increase (trips ?t) 1)
 			(increase (minutes_of_work ?s) (travel_duration))
-			(increase (total_work) (travel_duration))
 			(not (at ?s Warehouse1))
 			(not (at ?t Warehouse1))
 			(at ?s ?w)
@@ -73,13 +75,15 @@
 			(not(= ?w Warehouse1))
 			(at ?t ?w)
 			(at ?s ?w)
-			(parcel_in_truck ?p ?t)
+			(at ?p ?t)
+			(not (parcel_loaded_at ?p ?w))
 		)
 		:effect (and
+			(at ?p ?w)
+			(not(at ?p ?t))
+			
+			(increase (parcels_handled ?s) 1)
 			(increase (minutes_of_work ?s) 10)
-			(increase (total_work) 10)
-			(parcel_in_warehouse ?p ?w)
-			(not(parcel_in_truck ?p ?t))
 		)
 	)
 
@@ -87,19 +91,19 @@
 		:parameters (?t - truck ?s - driver ?w - warehouse ?l - location)
 		:precondition (and
 			(not(= ?w Warehouse1))
+			(exists (?p - parcel)(at ?p Warehouse1))
 			(at ?s ?w)
 			(at ?t ?w)
 			(at ?w ?l)
-			(forall(?p - parcel)(not(parcel_in_truck ?p ?t)))
+			(forall(?p - parcel)(not(at ?p ?t)))
 		)
 		:effect (and
 			(increase (kilometers_travelled ?t) (distance_to_spandau ?l))
 			(increase (minutes_of_work ?s) (travel_duration))
-			(increase (total_work) (travel_duration))
 			(not (at ?s ?w))
 			(not (at ?t ?w))
 			(at ?s Warehouse1)
 			(at ?t Warehouse1)
 		)
 	)
-)
+) 
