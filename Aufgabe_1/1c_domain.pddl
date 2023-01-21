@@ -49,13 +49,13 @@
 	(:action transport_from_spandau
 		:parameters (?t - truck ?s - driver  ?w - warehouse ?l - location)
 		:precondition (and
-			(forall(?d - driver)(<=(minutes_of_work ?s)(minutes_of_work ?d)))
-			(forall(?tr - truck)(<=(trips ?t)(trips ?tr)))
 			(not(= Warehouse1 ?w))
 			(not(warehouse_checked ?w))
 			(at ?s Warehouse1)
 			(at ?t Warehouse1)
 			(at ?w ?l)
+			(forall(?d - driver)(<=(minutes_of_work ?s)(minutes_of_work ?d)))
+			(forall(?tr - truck)(<=(trips ?t)(trips ?tr)))
 		)
 		:effect (and
 			(warehouse_checked ?w)
@@ -91,10 +91,10 @@
 		:parameters (?t - truck ?s - driver ?w - warehouse ?l - location)
 		:precondition (and
 			(not(= ?w Warehouse1))
-			(exists (?p - parcel)(at ?p Warehouse1))
 			(at ?s ?w)
 			(at ?t ?w)
 			(at ?w ?l)
+			(exists (?p - parcel)(at ?p Warehouse1))
 			(forall(?p - parcel)(not(at ?p ?t)))
 		)
 		:effect (and

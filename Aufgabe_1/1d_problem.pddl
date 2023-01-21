@@ -60,7 +60,6 @@
         (at Parcel7 Warehouse1)
         (at Parcel8 Warehouse1)
 
-        (=(total_work)0)
     )
 
     (:goal
