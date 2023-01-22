@@ -20,9 +20,7 @@
 	(:functions
 		(trips ?t - truck)
 		(minutes_of_work ?s - staff)
-		(kilometers_travelled ?t - truck)
 		(travel_duration)
-		(distance_to_spandau ?l - location)
 	)
 
 	(:action load
@@ -52,7 +50,6 @@
 		)
 		:effect (and
 			(warehouse_checked ?w)
-			(increase (kilometers_travelled ?t) (distance_to_spandau ?l))
 			(increase (trips ?t) 1)
 			(increase (minutes_of_work ?s) (travel_duration))
 			(not (at ?s Warehouse1))
@@ -88,7 +85,6 @@
 			(forall(?p - parcel)(not(at ?p ?t)))
 		)
 		:effect (and
-			(increase (kilometers_travelled ?t) (distance_to_spandau ?l))
 			(increase (minutes_of_work ?s) (travel_duration))
 			(not (at ?s ?w))
 			(not (at ?t ?w))

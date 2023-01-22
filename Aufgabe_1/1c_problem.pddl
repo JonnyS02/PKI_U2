@@ -35,18 +35,11 @@
         (at Truck1 Warehouse1)
         (at Truck2 Warehouse1)
 
-        (=(kilometers_travelled Truck1)14725)
-        (=(kilometers_travelled Truck2)14690)
-
         (at Warehouse1 Spandau)
         (at Warehouse2 Lichtenberg)
         (at Warehouse3 Pankow)
         (at Warehouse4 Neukoellen)
         (at Warehouse5 Neukoellen)
-
-        (=(distance_to_spandau Pankow)15)
-        (=(distance_to_spandau Lichtenberg)26)
-        (=(distance_to_spandau Neukoellen)25)
 
         (at Parcel1 Warehouse1)
         (at Parcel2 Warehouse1)
@@ -61,14 +54,6 @@
 
     (:goal
         (and
-
-       ;(=(parcels_handled Fischer)4) OOM
-       ;(=(parcels_handled Berger)4)
-       ;(=(parcels_handled Schmitz)4)
-       ;(=(parcels_handled Meyer)4)
-
-            ;(>=(minutes_of_work Fischer)(/(total_work)4)) OOM
-            ;(>=(minutes_of_work Fischer) 60)
             (at Parcel1 Warehouse2)
             (at Parcel3 Warehouse2)
             (at Parcel4 Warehouse2)
@@ -81,7 +66,4 @@
             (at Parcel8 Warehouse4)
         )
     )
-   ;(:metric maximize (kilometers_travelled Truck1)) OOM
-   ;(:metric minimize (+(kilometers_travelled Truck1)(kilometers_travelled Truck2)) OOM
-   ;(:metric minimize (+(minutes_of_work Meyer)(+(minutes_of_work Berger)(minutes_of_work Schmitz)))) Keine Verbesserung am Ergebnis
 )
