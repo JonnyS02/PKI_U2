@@ -12,11 +12,6 @@
     )
 
     (:init
-       (=(parcels_handled Fischer)-4)
-       (=(parcels_handled Berger)0)
-       (=(parcels_handled Schmitz)0)
-       (=(parcels_handled Meyer)0)
-
         (=(trips Truck1)0)
         (=(trips Truck2)0)
 
@@ -50,6 +45,10 @@
         (at Parcel7 Warehouse1)
         (at Parcel8 Warehouse1)
 
+       (=(parcels_handled Fischer)-4)
+       (=(parcels_handled Berger)0)
+       (=(parcels_handled Schmitz)0)
+       (=(parcels_handled Meyer)0)
     )
 
     (:goal

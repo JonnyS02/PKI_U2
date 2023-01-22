@@ -12,11 +12,6 @@
     )
 
     (:init
-       (=(parcels_handled Fischer)-4)
-       (=(parcels_handled Berger)0)
-       (=(parcels_handled Schmitz)0)
-       (=(parcels_handled Meyer)0)
-
         (=(trips Truck1)0)
         (=(trips Truck2)0)
         (=(trips Truck3)0)
@@ -37,19 +32,11 @@
         (at Truck2 Warehouse1)
         (at Truck3 Warehouse1)
 
-        (=(kilometers_travelled Truck1)14725)
-        (=(kilometers_travelled Truck2)14690)
-        (=(kilometers_travelled Truck3)150)
-
         (at Warehouse1 Spandau)
         (at Warehouse2 Lichtenberg)
         (at Warehouse3 Pankow)
         (at Warehouse4 Neukoellen)
         (at Warehouse5 Neukoellen)
-
-        (=(distance_to_spandau Pankow)15)
-        (=(distance_to_spandau Lichtenberg)26)
-        (=(distance_to_spandau Neukoellen)25)
 
         (at Parcel1 Warehouse1)
         (at Parcel2 Warehouse1)
@@ -60,6 +47,18 @@
         (at Parcel7 Warehouse1)
         (at Parcel8 Warehouse1)
 
+        (=(parcels_handled Fischer)-4)
+        (=(parcels_handled Berger)0)
+        (=(parcels_handled Schmitz)0)
+        (=(parcels_handled Meyer)0)
+       
+        (=(distance_to_spandau Pankow)15)
+        (=(distance_to_spandau Lichtenberg)26)
+        (=(distance_to_spandau Neukoellen)25)
+
+        (=(kilometers_travelled Truck1)14725)
+        (=(kilometers_travelled Truck2)14690)
+        (=(kilometers_travelled Truck3)150)
     )
 
     (:goal
@@ -75,7 +74,5 @@
             (at Parcel6 Warehouse4)
             (at Parcel8 Warehouse4)
         )
-    )
-    (:metric maximize (kilometers_travelled Fischer)
     )
 )
