@@ -23,6 +23,7 @@
 		(travel_duration)
 		
 		(parcels_handled ?s)
+		
 		(kilometers_travelled ?t - truck)
 		(distance_to_spandau ?l - location)
 	)
