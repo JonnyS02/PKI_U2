@@ -44,15 +44,12 @@
         (at Parcel6 Warehouse1)
         (at Parcel7 Warehouse1)
         (at Parcel8 Warehouse1)
-
-       (=(parcels_handled Fischer)-4)
-       (=(parcels_handled Berger)0)
-       (=(parcels_handled Schmitz)0)
-       (=(parcels_handled Meyer)0)
     )
 
     (:goal
         (and
+            (forall (?s - staff)(>=(minutes_of_work ?s) 40))
+
             (at Parcel1 Warehouse2)
             (at Parcel3 Warehouse2)
             (at Parcel4 Warehouse2)
