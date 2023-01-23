@@ -21,8 +21,7 @@
 		(trips ?t - truck)
 		(minutes_of_work ?s - staff)
 		(travel_duration)
-		
-		(parcels_handled ?s)
+				
 		(kilometers_travelled ?t - truck)
 		(distance_to_spandau ?l - location)
 	)
@@ -33,15 +32,12 @@
 			(at ?t ?w)
 			(at ?s ?w)
 			(at ?p ?w)
-
-			(forall(?st - staff)(<=(parcels_handled ?s)(parcels_handled ?st)))
 		)
 		:effect (and
 			(parcel_loaded_at ?p ?w)
 			(not(at ?p ?w))
 			(at ?p ?t)
 
-			(increase (parcels_handled ?s) 1)
 			(increase (minutes_of_work ?s) 10)			
 		)
 	)
@@ -54,8 +50,8 @@
 			(at ?s Warehouse1)
 			(at ?t Warehouse1)
 			(at ?w ?l)
-			(forall(?d - driver)(<=(minutes_of_work ?s)(minutes_of_work ?d)))
-			(forall(?tr - truck)(<=(trips ?t)(trips ?tr)))			
+			(forall(?tr - truck)(<=(trips ?t)(trips ?tr)))		
+			(exists (?p - parcel)(at ?p ?t))	
 		)
 		:effect (and
 			(warehouse_checked ?w)
@@ -83,7 +79,6 @@
 			(at ?p ?w)
 			(not(at ?p ?t))
 
-			(increase (parcels_handled ?s) 1)
 			(increase (minutes_of_work ?s) 10)
 		)
 	)
@@ -96,7 +91,7 @@
 			(at ?t ?w)
 			(at ?w ?l)
 			(exists (?p - parcel)(at ?p Warehouse1))
-			(forall(?p - parcel)(not(at ?p ?t)))
+			(not(exists (?p - parcel)(at ?p ?t)))
 		)
 		:effect (and
 			(increase (minutes_of_work ?s) (travel_duration))
