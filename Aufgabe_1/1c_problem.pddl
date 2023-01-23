@@ -48,7 +48,7 @@
 
     (:goal
         (and
-            (forall (?s - staff)(>=(minutes_of_work ?s) 40))
+            (forall (?s - staff)(>=(minutes_of_work ?s) 50))
 
             (at Parcel1 Warehouse2)
             (at Parcel3 Warehouse2)
