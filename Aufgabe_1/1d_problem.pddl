@@ -58,6 +58,7 @@
 
     (:goal
         (and
+            (forall (?t - truck)(not(at ?t Warehouse1)))
             (forall(?s - staff)(>=(minutes_of_work ?s)50))
             
             (at Parcel1 Warehouse2)
