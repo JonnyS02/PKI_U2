@@ -46,18 +46,6 @@
         (=(anzahl-termine-lehrer Birke)0)
         (=(anzahl-termine-lehrer Kiefer)0)
 
-        ;2d
-        ;(lehrer-verplant Birke Tag1Nachmittag)
-        ;(lehrer-verplant Birke Tag2Nachmittag)
-        ;(lehrer-verplant Birke Tag3Nachmittag)
-        ;(lehrer-verplant Birke Tag4Nachmittag)
-        ;(lehrer-verplant Birke Tag5Nachmittag)
-        ;(lehrer-verplant Kiefer Tag1Vormittag)
-        ;(lehrer-verplant Kiefer Tag2Vormittag)
-        ;(lehrer-verplant Kiefer Tag3Vormittag)
-        ;(lehrer-verplant Kiefer Tag4Vormittag)
-        ;(lehrer-verplant Kiefer Tag5Vormittag)
-
         ;Es wurden 2 Aktionen zur Realisierung des Problems mit verschiedenen Ansätzen implementiert.
         ;Die folgende Funktion agiert als eine Art Schalter: 
         ;(=(gewinn_maximieren)0) -> belegen0 wird genutzt, (=(gewinn_maximieren)1) -> belegen1 wird genutzt.
