@@ -45,8 +45,8 @@
 			(at ?s Warehouse1)
 			(at ?t Warehouse1)
 			(at ?w ?l)
-			(forall(?d - driver)(<=(minutes_of_work ?s)(minutes_of_work ?d)))
 			(forall(?tr - truck)(<=(trips ?t)(trips ?tr)))
+			(exists (?p - parcel)(at ?p ?t))
 		)
 		:effect (and
 			(warehouse_checked ?w)
@@ -82,7 +82,7 @@
 			(at ?t ?w)
 			(at ?w ?l)
 			(exists (?p - parcel)(at ?p Warehouse1))
-			(forall(?p - parcel)(not(at ?p ?t)))
+			(not(exists (?p - parcel)(at ?p ?t)))
 		)
 		:effect (and
 			(increase (minutes_of_work ?s) (travel_duration))
