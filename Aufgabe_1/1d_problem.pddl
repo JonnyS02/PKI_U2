@@ -8,14 +8,9 @@
         Truck1 Truck2 Truck3 - truck
         Fischer - staff
         Berger Schmitz Meyer - driver
-        Spandau Pankow Lichtenberg Neukoellen - location
     )
 
     (:init
-        (=(trips Truck1)0)
-        (=(trips Truck2)0)
-        (=(trips Truck3)0)
-
         (=(travel_duration)30)
 
         (at Fischer Warehouse1)
@@ -46,6 +41,10 @@
         (at Parcel6 Warehouse1)
         (at Parcel7 Warehouse1)
         (at Parcel8 Warehouse1)
+
+        (=(kilometers_travelled_relative Truck1)0)
+        (=(kilometers_travelled_relative Truck2)0)
+        (=(kilometers_travelled_relative Truck3)0)
        
         (=(distance_to_spandau Pankow)15)
         (=(distance_to_spandau Lichtenberg)26)
