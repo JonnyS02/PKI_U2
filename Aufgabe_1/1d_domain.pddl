@@ -66,7 +66,6 @@
 			(not (at ?s Warehouse1))
 			(not (at ?t Warehouse1))
 			(at ?s ?w)
-
 			(at ?t ?w)
 
 			(increase (kilometers_travelled ?t) (distance_to_spandau ?l))
